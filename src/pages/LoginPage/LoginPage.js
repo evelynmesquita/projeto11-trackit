@@ -16,7 +16,9 @@ export default function LoginPage() {
             </LoginInput>
 
             <LoginButton>
-                <button>Entrar</button>
+                <Link to="/habitos">
+                    <button>Entrar</button>
+                </Link>
             </LoginButton>
 
             <SignUpLoginPage>
