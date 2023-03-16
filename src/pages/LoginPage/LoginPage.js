@@ -1,7 +1,45 @@
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios";
+import { ThreeDots } from 'react-loader-spinner'
+import AppContext from "../../context/AppContext"
 
 export default function LoginPage() {
+
+    //const { setUser } = useContext(AppContext);
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [disabled, setDisabled] = useState(false)
+
+
+    function loginApp(e) {
+        e.preventDefault()
+        setDisabled(true)
+
+        const infoLogin = {
+            email,
+            password
+        }
+
+        axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", infoLogin)
+            .then((resp) => {
+                /*setUser({
+                    image: resp.data.image,
+                    token: resp.data.token
+                })*/
+                setDisabled(false)
+                navigate("/hoje")
+            })
+
+            .catch((err) => {
+                alert(err.response.data.message)
+                window.location.reload()
+                console.log("vixe")
+            })
+    }
+
     return (
         <>
             <Logo>
@@ -9,20 +47,38 @@ export default function LoginPage() {
             </Logo>
 
             <LoginInput>
-                <form>
-                    <input placeholder="email" type="email" required/>
-                    <input placeholder="senha" type="password" required/>
+                <form onSubmit={loginApp} disabled={disabled} >
+                    <input 
+                        data-test="email-input" 
+                        disabled={disabled} 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        type="email" 
+                        placeholder="email" 
+                        required />
+
+                    <input 
+                        data-test="password-input" 
+                        disabled={disabled} 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        type="password" 
+                        placeholder="senha" 
+                        required />
+
+                    <button data-test="login-btn" disabled={disabled} type="submit">{!disabled ? 'Entrar' :
+                        <ThreeDots
+                            width="60"
+                            height="60"
+                            color="#FFFFFF"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            visible={true}
+                            wrapperClassName=""
+                        />}</button>
                 </form>
             </LoginInput>
 
-            <LoginButton>
-                <Link to="/habitos">
-                    <button>Entrar</button>
-                </Link>
-            </LoginButton>
-
             <SignUpLoginPage>
-                <Link to="/cadastro">
+                <Link data-test="signup-link" to="/cadastro">
                     <span>Não tem uma conta? Cadastre-se!</span>
                 </Link>
             </SignUpLoginPage>
@@ -68,14 +124,6 @@ const LoginInput = styled.div`
     input::placeholder {
         color: #DBDBDB;
     }
-`
-
-const LoginButton = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    align-items: center;
-    margin-top: 6px;
 
     button {
     width: 303px;
@@ -89,9 +137,12 @@ const LoginButton = styled.div`
     line-height: 26px;
     text-align: center;
     color: #FFFFFF;
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     }
-    
 `
 
 const SignUpLoginPage = styled.div`

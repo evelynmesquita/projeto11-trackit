@@ -1,7 +1,44 @@
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"
+import { useState } from "react"
+import { ThreeDots } from "react-loader-spinner"
 
 export default function SignUpPage() {
+
+    const navigate = useNavigate()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [name, setName] = useState("")
+    const [image, setImage] = useState("")
+    const [disabled, setDisabled] = useState(false)
+
+    function registerUser(e) {
+        e.preventDefault()
+        setDisabled(true)
+
+        const infoRegister = {
+            email,
+            name,
+            image,
+            password
+        }
+
+        axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", infoRegister)
+            .then((res) => {
+                alert("Usuário cadastrado com sucesso!")
+                navigate("/")
+                setDisabled(false)
+                console.log(res.data)
+
+            })
+            .catch((err) => {
+                alert(err.response.data.message)
+                window.location.reload()
+            })
+
+    }
+
     return (
         <>
             <Logo>
@@ -9,20 +46,55 @@ export default function SignUpPage() {
             </Logo>
 
             <RegisterInput>
-                <form>
-                    <input placeholder="email" type="email"/>
-                    <input placeholder="senha" type="password"/>
-                    <input placeholder="nome" type="text"/>
-                    <input placeholder="foto" type="url"/>
+                <form onSubmit={registerUser}>
+                    <input 
+                        data-test="email-input" 
+                        disabled={disabled} 
+                        type="email" onChange={(e) => setEmail(e.target.value)} 
+                        placeholder="email" 
+                        required/>
+
+                    <input 
+                        data-test="password-input" 
+                        disabled={disabled} 
+                        type="password" 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        placeholder="senha"
+                        required/>
+
+                    <input 
+                        data-test="user-name-input" 
+                        disabled={disabled} 
+                        type="name" 
+                        onChange={(e) => setName(e.target.value)} 
+                        placeholder="nome"
+                        required/>
+
+                    <input 
+                        data-test="user-image-input" 
+                        disabled={disabled} 
+                        type="url" 
+                        onChange={(e) => setImage(e.target.value)} 
+                        placeholder="foto"
+                        required/>
+
+                    <button 
+                        data-test="signup-btn" 
+                        disabled={disabled} 
+                        type="submit">
+                            {!disabled ? 'Cadastrar' :
+                            <ThreeDots
+                                width="60"
+                                height="60"
+                                color="#FFFFFF"
+                                ariaLabel="three-dots-loading"
+                                wrapperStyle={{}}
+                                wrapperClassName=""
+                                visible={true}
+                            />}</button>
                 </form>
                 
             </RegisterInput>
-
-            <RegisterButton>
-                <Link to="/">
-                    <button>Cadastrar</button>
-                </Link>
-            </RegisterButton>
 
             <SingIn>
                 <Link to="/">
@@ -71,15 +143,7 @@ const RegisterInput = styled.div`
     input::placeholder {
         color: #DBDBDB;
     }
-`
-
-const RegisterButton = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    align-items: center;
-    margin-top: 6px;
-
+    
     button {
     width: 303px;
     height: 45px;
@@ -92,6 +156,10 @@ const RegisterButton = styled.div`
     line-height: 26px;
     text-align: center;
     color: #FFFFFF;
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
     
 `
