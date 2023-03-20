@@ -42,7 +42,7 @@ export default function SignUpPage() {
     return (
         <>
             <Logo>
-                <img src='../assets/logo.png' />
+                <img src="../assets/img/logo.png" />
             </Logo>
 
             <RegisterInput>
@@ -135,7 +135,7 @@ const RegisterInput = styled.div`
     font-style: normal;
     font-size: 19.976px;
     line-height: 25px; 
-    color: #DBDBDB;
+    color: #666666;;
     padding-left: 11px;
     margin-top: 5px;
     }

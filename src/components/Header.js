@@ -1,10 +1,13 @@
 import styled from 'styled-components'
+import { useContext } from "react"
+import AppContext from "../context/AppContext"
 
 export default function Header() {
+    const { user } = useContext(AppContext)
     return (
-        <HeaderStyle>
+        <HeaderStyle data-test="header">
             <h1>TrackIt</h1>
-            <img src='../assets/profile.png' />
+            <img src={user.image} alt="userImage" />
         </HeaderStyle>
     )
 }
@@ -28,6 +31,7 @@ const HeaderStyle = styled.div`
         height: 51px;
         margin-top: 9px;
         margin-right: 10px;
+        border-radius: 50%;
     }
 
     h1 {

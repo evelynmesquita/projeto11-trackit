@@ -7,7 +7,7 @@ import AppContext from "../../context/AppContext"
 
 export default function LoginPage() {
 
-    //const { setUser } = useContext(AppContext);
+    const { setUser } = useContext(AppContext);
     const navigate = useNavigate();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -25,10 +25,10 @@ export default function LoginPage() {
 
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", infoLogin)
             .then((resp) => {
-                /*setUser({
+                setUser({
                     image: resp.data.image,
                     token: resp.data.token
-                })*/
+                })
                 setDisabled(false)
                 navigate("/hoje")
             })
@@ -43,7 +43,7 @@ export default function LoginPage() {
     return (
         <>
             <Logo>
-                <img src='../assets/logo.png' />
+                <img src="../assets/img/logo.png" />
             </Logo>
 
             <LoginInput>
@@ -116,7 +116,7 @@ const LoginInput = styled.div`
     font-style: normal;
     font-size: 19.976px;
     line-height: 25px; 
-    color: #DBDBDB;
+    color: #666666;
     padding-left: 11px;
     margin-top: 5px;
     }
