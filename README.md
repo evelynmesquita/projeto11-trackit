@@ -1,6 +1,6 @@
 <p align="center">
   <a href="projeto11-trackit-jet-one.vercel.app" target="_blank">
-    <img src="src/puclic/assets/img/logo.png" height="160" width="160" alt="" />
+    <img src="puclic/assets/img/logo.png" height="160" width="160" alt="" />
   </a>
 </p>
 
