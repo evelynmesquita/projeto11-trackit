@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="projeto11-trackit-jet-one.vercel.app" target="_blank">
+    <img src="src/assets/logo.png" height="160" width="160" alt="" />
+  </a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Description
 
-## Available Scripts
+In this project, you will build a complete habit tracking application! With features such as registration, login, and plenty of libraries 🙂.
 
-In the project directory, you can run:
+## Requirements
 
-### `npm start`
+- [x] Desktop version is not required, only mobile
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Login Screen
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [x] Email and password must be sent to the API according to the documentation <br>
+- [x] While loading, fields and the button should be disabled, following the layout <br>
+- [x] Upon success, the user should be redirected to the route /today <br>
+- [x] Upon success, the user should be redirected to the route /today <br>
+- [x] Clicking on the link to register should redirect the user to the route /register <br>
 
-### `npm test`
+## Register Screen
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [x] Data must be sent to the API according to the documentation <br>
+- [x] While loading, fields and the button should be disabled, following the layout <br>
+- [x] Upon success, the user should be redirected to the route / (Login route) <br>
+- [x] In case of failure, an alert should be displayed informing the user and fields/button should be enabled again <br>
+- [x] Clicking on the link to log in should redirect the user to the route / (Login route) <br>
 
-### `npm run build`
+## Header and Menu
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] The header and menu must have a fixed position, and the user's photo should be displayed in the header according to the layout <br>
+- [x] In the menu, the 3 buttons for Habits, Today, and History should redirect the user to the routes /habits, /today, and /history respectively <br>
+- [x] The Today button should display a circular progress bar indicating the percentage of the user's habits completed today <br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Habits Screen
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [x] Load the user's habits by sending a request to the API according to the documentation and display them below as per the layout
+- [x] Clicking to delete a habit should display a 'confirm' to verify if the user really wants to delete the habit. If confirmed, a request should be sent to the API according to the documentation, and the habits reloaded immediately after.
+- [x] If the user has no habits registered, the text should be displayed according to the layout
+- [x] Clicking on the "+" button should display a habit creation form just below the title as per the layout
+- [x] The user should enter the habit's name in a text field and select the days of the week they wish to perform the habit according to the layout
+- [x] Upon saving, data should be sent to the API according to the documentation
+- [x] While loading, the text field and button should be disabled, as per the layout. The buttons for the days of the week should be disabled, but visual changes during loading are not necessary.
+- [x] In case of success, the fields should be cleared and re-enabled, the form should be hidden again, and the list of habits below reloaded
+- [x] In case of error, the fields should be re-enabled, and an alert should indicate the problem to the user
+- [x] Clicking on Cancel should hide the form. If there were already filled data, it should be retained in case the user reopens the creation form.
 
-### `npm run eject`
+## Today Screen
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [x] Load the user's habits for today by sending a request to the API according to the documentation and display them below as per the layout
+- [x] The title of the screen should display today's date according to the layout
+- [x] The subtitle should display the phrase "No habits completed yet" or "x% of habits completed," depending on the user's progress
+- [x] When marking or unmarking a habit as completed, a request should be sent to the API according to the documentation. No loading is necessary.
+- [x] When marking a habit as completed, the current sequence count should be displayed in green
+- [x] If the current sequence equals the user's record, it should also be displayed in green
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## History Screen
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [x] The text should be displayed according to the layout
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Tech Stack
 
-## Learn More
+Languages and tools:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Deploy
 
-### Code Splitting
+The application layout is available on Vercel:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href="projeto11-trackit-jet-one.vercel.app" target="_blank">
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
+</a>
